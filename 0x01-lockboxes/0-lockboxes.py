@@ -1,41 +1,30 @@
 #!/usr/bin/python3
-"""Lockboxes"""
+""" Module that checks locked boxes """
 
 
 def canUnlockAll(boxes):
-    """Unlock the boxes"""
-    locked = boxes.copy()
-    list_of_keys = []
-    iterate = 0
+    """ Method that determines if all boxes can be opened """
 
-    for item in boxes:
-        # Handle the first box (always unlocked)
-        if iterate == 0:
-            # Gather keys
-            for k in item:
-                if k not in list_of_keys:
-                    list_of_keys.append(k)
-            locked.remove(item)
-        # Every other box
-        else:
-            if iterate in list_of_keys:
-                # Gather keys
-                for k in item:
-                    if k not in list_of_keys:
-                        list_of_keys.append(k)
-                for remaining in locked:
-                    if iterate in list_of_keys:
-                        # Gather keys
-                        for k in item:
-                            if k not in list_of_keys:
-                                list_of_keys.append(k)
-                        locked.remove(remaining)
-        iterate += 1
+    if boxes == 0:
+        return False
 
-    if locked == []:
-        # True if nothing
+    if not isinstance(boxes, list):
+        return False
+
+    if len(boxes) == 0:
+        return False
+
+    check = [0]
+    list_ing = [i for i in range(len(boxes))]
+
+    for in_check in check:
+        for in_boxes in boxes[in_check]:
+            if in_boxes not in check and in_boxes in list_ing:
+                if in_boxes >= len(boxes):
+                    return False
+                check.append(in_boxes)
+
+    if len(check) == len(boxes):
         return True
-    if len(boxes) == 1:
-        # True if only one box (first box is always unlocked)
-        return True
-    return False
+    else:
+        return False
