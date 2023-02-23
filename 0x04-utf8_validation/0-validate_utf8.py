@@ -29,4 +29,4 @@ def validUTF8(data):
             if not (i & m1 and not (i & m2)):
                 return False
         nbytes -= 1
-    return nbytes == 0
+    return nbytes == 0 
