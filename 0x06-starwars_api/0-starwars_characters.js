@@ -1,4 +1,5 @@
-#!/usr/bin/node
+
+!/usr/bin/node
 const request = require('request');
 const movieId = process.argv[2];
 const options = {
